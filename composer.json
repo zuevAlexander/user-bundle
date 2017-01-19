@@ -1,0 +1,31 @@
+{
+    "name" : "nd-symfony/user-bundle",
+    "type" : "symfony-bundle",
+    "description" : "This Bundle provide security components: authorization and authentication",
+    "authors" : [{
+        "name" : "Alexander Zuev",
+        "email" : "zuev22@gmail.com"
+    }],
+    "keywords" : [
+        "authorization authentication login"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php": ">=5.5.9",
+        "symfony/http-kernel": "~3.0",
+        "symfony/security-core": "~3.0",
+        "symfony/security-guard": "~3.0",
+        "symfony/translation": "~3.0",
+        "symfony/http-foundation": "~3.0",
+        "doctrine/orm": "^2.5"
+    },
+    "require-dev": {
+    },
+    "autoload" : {
+        "psr-4" : {
+            "NorseDigital\\UserBundle\\" : "src"
+        }
+    }
+}

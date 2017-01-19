@@ -1,0 +1,34 @@
+parameters:
+  user_bundle.webservice_user_provider.class: NorseDigital\UserBundle\Security\WebserviceUserProvider
+  user_bundle.password_authenticator.class: NorseDigital\UserBundle\Security\PasswordAuthenticator
+  user_bundle.token_authenticator.class: NorseDigital\UserBundle\Security\TokenAuthenticator
+  doctrine.metadata.class: Doctrine\ORM\Mapping\ClassMetadata
+
+services:
+  user_bundle.service.user.metadata:
+    class: '%doctrine.metadata.class%'
+    arguments:
+      - '%user_bundle.entity.user%'
+
+  user_bundle.service.user.repository:
+    class: '%user_bundle.repository.user.class%'
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@user_bundle.service.user.metadata'
+
+  user_bundle.webservice_user_provider:
+    class: '%user_bundle.webservice_user_provider.class%'
+    arguments:
+      - '@user_bundle.service.user.repository'
+
+  user_bundle.token_authenticator:
+    class: '%user_bundle.token_authenticator.class%'
+    arguments:
+      - '@translator'
+      - '%authenticate_token_name%'
+
+  user_bundle.password_authenticator:
+    class: '%user_bundle.password_authenticator.class%'
+    arguments:
+      - '@translator'
+      - '@security.password_encoder'
