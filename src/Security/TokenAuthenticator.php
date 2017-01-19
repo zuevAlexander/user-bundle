@@ -24,7 +24,7 @@ class TokenAuthenticator extends AbstractBaseAuthenticator
      * @param TranslatorInterface $translator
      * @param string $authenticateTokenName
      */
-    public function __construct(TranslatorInterface $translator, string $authenticateTokenName = 'battle')
+    public function __construct(TranslatorInterface $translator, string $authenticateTokenName)
     {
         parent::__construct($translator);
         $this->authenticateTokenName = $authenticateTokenName;
